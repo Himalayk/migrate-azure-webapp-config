@@ -1,7 +1,7 @@
 Slot,OldWebApp,OldResourceGroupName,OldSubscriptionId,NewWebApp,NewResourceGroupName,NewSubscriptionId
-Prod,hkwebapp1,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
-dev,hkwebapp1,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
-qa,hkwebapp1,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
-Prod,webapp1-2,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2-2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
-dev,webapp1-2,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2-2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
-qa,webapp1-2,webapp-rg1,10defeec-3e52-4253-8805-e69bc5f2385e,hkwebapp2-2,webapp-rg2,3835480a-3e98-411b-8954-c7e2c16f7060
+Prod,webapp1,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+dev,webapp1,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+qa,webapp1,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+Prod,webapp1-2,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2-2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+dev,webapp1-2,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2-2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+qa,webapp1-2,webapp-rg1,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx,webapp2-2,webapp-rg2,xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
