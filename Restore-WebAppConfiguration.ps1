@@ -34,20 +34,23 @@ $Mappings | ForEach-Object {
         
 
         if($AppSettingsFileContent -ne $null){
-             Write-Host "Configuring Application Settings of web app:" $_.NewWebApp "Slot" $_.Slot
-                $AppSettingsFileContent | ForEach-Object {$AppSettingsHashtable[$_.Name] = $_.Value}
-                Set-AzWebApp -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp -AppSettings $AppSettingsHashtable
-                Write-Host "Done"
+            Write-Host "Configuring Application Settings of web app:" $_.NewWebApp "Slot:" $_.Slot
+            $AppSettingsFileContent | ForEach-Object {$AppSettingsHashtable[$_.Name] = $_.Value}
+            Set-AzWebApp -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp -AppSettings $AppSettingsHashtable
+            Write-Host "Done"
         }
-        else{
-            # if($ConnectionStringFileContent -ne $null){
-            #     Write-Host "Setting Connection Strings of web app:" $_.NewResourceGroupName "Slot" $_.Slot
-            #     $ConnectionStringFileContent | ForEach-Object {
-            #         $ConnectionStringHashtable[$_.Name] = $_.value 
-            #         }
-            #     Set-AzWebApp -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp  -ConnectionStrings $ConnectionStringHashtable
-            #     Write-Host "Done"
-            # }
+        
+        if($ConnectionStringFileContent -ne $null){
+            ForEach ($ConnectionString in $ConnectionStringFileContent) {
+                $ConnectionStringHashtable[$ConnectionString.Name] = @{
+                        Value=$ConnectionString.ConnectionString;
+                        Type="CUSTOM"
+                }
+            }
+
+            Write-Host "Setting Connection Strings of web app:" $_.NewWebApp "Slot" $_.Slot
+            Set-AzWebApp -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp -ConnectionStrings $ConnectionStringHashtable
+            Write-Host "Done"
         }
     }
     else{
@@ -61,21 +64,24 @@ $Mappings | ForEach-Object {
         $AppSettingsHashtable = New-Object System.Collections.Hashtable
         $ConnectionStringHashtable = New-Object System.Collections.Hashtable
         
-
         if($AppSettingsFileContent -ne $null){
-             Write-Host "Setting Application Settings of web app:" $_.NewWebApp "Slot" $_.Slot
-                $AppSettingsFileContent | ForEach-Object {$AppSettingsHashtable[$_.Name] = $_.Value}
-                Set-AzWebAppSlot -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp -AppSettings $AppSettingsHashtable -Slot $_.Slot
-                Write-Host "Done"
+            Write-Host "Setting Application Settings of web app:" $_.NewWebApp "Slot" $_.Slot
+            $AppSettingsFileContent | ForEach-Object {$AppSettingsHashtable[$_.Name] = $_.Value}
+            Set-AzWebAppSlot -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp -AppSettings $AppSettingsHashtable -Slot $_.Slot
             Write-Host "Done"
         }
-        else{
-            # if($null -ne $ConnectionStringFileContent){
-            #     Write-Host "Setting Connection Strings of web app:" $_.NewResourceGroupName "Slot" $_.Slot
-            #     $ConnectionStringFileContent | ForEach-Object {$ConnectionStringHashtable[$_.Name] = $_.Value}
-            #     Set-AzWebAppSlot -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp  -ConnectionStrings $ConnectionStringHashtable -Slot $_.Slot
-            #     Write-Host "Done"
-            # }
+        
+        if($null -ne $ConnectionStringFileContent){
+            ForEach ($ConnectionString in $ConnectionStringFileContent) {
+                $ConnectionStringHashtable[$ConnectionString.Name] = @{
+                        Value=$ConnectionString.ConnectionString;
+                        Type="CUSTOM"
+                }
+            }
+
+            Write-Host "Setting Connection Strings of web app:" $_.NewWebApp "Slot" $_.Slot
+            Set-AzWebAppSlot -ResourceGroupName $_.NewResourceGroupName -Name $_.NewWebApp  -ConnectionStrings $ConnectionStringHashtable -Slot $_.Slot
+            Write-Host "Done"
         }
     }
 }
