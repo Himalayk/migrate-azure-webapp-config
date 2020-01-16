@@ -4,6 +4,10 @@ Write-Host "Importing Web App mapping CSV"
 $Mappings = Import-Csv -Path .\WebAppMapping.csv
 Write-Host "Successfully imported" -ForegroundColor Green
 
+Write-host "Creating Backup directory"
+New-Item ./Backups -ItemType Directory -Force
+Write-host "Backup directory created successfully"
+
 $Mappings | ForEach-Object {
     if($_.Slot -eq "Prod") {
         Write-Host "Checking Az powerShell context"
